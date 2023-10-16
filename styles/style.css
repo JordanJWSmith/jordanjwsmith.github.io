@@ -1,15 +1,22 @@
 @font-face { 
-    font-family: 'agrandir'; 
+    font-family: 'agrandir_bold'; 
+    src: url('../fonts/agrandir/Agrandir-TextBold.otf') format('opentype'); 
+    font-weight: normal; 
+    font-style: normal; 
+ } 
+
+ @font-face { 
+    font-family: 'agrandir_regular'; 
     src: url('../fonts/agrandir/Agrandir-Regular.otf') format('opentype'); 
     font-weight: normal; 
     font-style: normal; 
  } 
 
 p {
-    font-family: 'agrandir';
+    font-family: 'agrandir_regular';
 
   }
 
 h1 {
-    font-family: 'agrandir';
+    font-family: 'agrandir_bold';
   }
