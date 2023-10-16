@@ -1,2 +1,2 @@
 # jordanjwsmith.github.io
-Personal site
+Personal site in progress...
