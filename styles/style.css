@@ -1,13 +1,13 @@
 @font-face { 
     font-family: 'agrandir_bold'; 
-    src: url('../fonts/agrandir/Agrandir-TextBold.otf') format('opentype'); 
+    src: url('../assets/fonts/agrandir/Agrandir-TextBold.otf') format('opentype'); 
     font-weight: normal; 
     font-style: normal; 
  } 
 
  @font-face { 
     font-family: 'agrandir_regular'; 
-    src: url('../fonts/agrandir/Agrandir-Regular.otf') format('opentype'); 
+    src: url('../assets/fonts/agrandir/Agrandir-Regular.otf') format('opentype'); 
     font-weight: normal; 
     font-style: normal; 
  } 
@@ -23,4 +23,66 @@ h1 {
 
 body {
   background-color: #e7dfd8;
+  display: flex;
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+  height: 100vh; /* Full viewport height */
+}
+
+.jumbotron {
+  border: 1px solid black; 
+  display: flex;
+  /* flex-direction: column; */
+  max-width: 70vw;
+  /* align-items: flex-start; */
+}
+
+.left-container {
+  width: 60%;
+  padding: 20px; 
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* border: 1px solid black; */
+}
+
+.content-container {
+  /* width: 60%; */
+  padding: 20px; 
+  height: 90%;
+  /* border: 1px solid black; */
+}
+
+.bottom-container {
+  width: 50%; /* Take up full width */
+  height: 10%; /* 10% of the jumbotron's height */
+  padding: 20px; /* Add padding for spacing */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  align-self: flex-start;
+  /* border: 1px solid black; */
+}
+
+.bottom-container i {
+  font-size: 2rem; /* Adjust the size as needed */
+}
+
+.bottom-container a {
+  color: black; /* Set the link color to black */
+  text-decoration: none; /* Remove underlines on the links */
+}
+
+.right-container {
+  width: 40%;
+  padding: 20px; 
+  /* border: 1px solid black; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.right-container img {
+  max-width: 100%;
+  height: auto;
 }
