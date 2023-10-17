@@ -13,10 +13,14 @@
  } 
 
 p {
-    font-family: 'agrandir_regular';
+  font-family: 'agrandir_regular';
 
   }
 
 h1 {
-    font-family: 'agrandir_bold';
+  font-family: 'agrandir_bold';
   }
+
+body {
+  background-color: #e7dfd8;
+}
