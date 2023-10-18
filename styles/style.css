@@ -26,19 +26,23 @@ body {
   display: flex;
   justify-content: center; /* Center horizontally */
   align-items: center; /* Center vertically */
-  height: 100vh; /* Full viewport height */
+  height: 100vh; 
+  overflow: scroll;
+  margin: 20px;
 }
 
 .jumbotron {
   border: 1px solid black; 
   display: flex;
+  overflow: auto;
+  justify-self: center;
   /* flex-direction: column; */
   max-width: 70vw;
   /* align-items: flex-start; */
 }
 
 .left-container {
-  width: 60%;
+  width: 65%;
   padding: 20px; 
   display: flex;
   flex-direction: column;
@@ -49,7 +53,7 @@ body {
 .content-container {
   /* width: 60%; */
   padding: 20px; 
-  height: 90%;
+  height: 80%;
   /* border: 1px solid black; */
 }
 
@@ -74,7 +78,7 @@ body {
 }
 
 .right-container {
-  width: 40%;
+  width: 35%;
   padding: 20px; 
   /* border: 1px solid black; */
   display: flex;
@@ -88,11 +92,17 @@ body {
 }
 
 @media (max-width: 768px) {
+
+  body {
+    height: auto;
+  }
+
   /* Change the layout on small screens (phones) */
   .jumbotron {
     flex-direction: column; /* Stack elements vertically */
     height: auto;
-    /* max-height: 90vh; */
+    /* max-height: 100vh; */
+    text-align: center;
   }
 
   .right-container {
