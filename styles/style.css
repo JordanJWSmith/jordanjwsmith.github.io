@@ -86,3 +86,29 @@ body {
   max-width: 100%;
   height: auto;
 }
+
+@media (max-width: 768px) {
+  /* Change the layout on small screens (phones) */
+  .jumbotron {
+    flex-direction: column; /* Stack elements vertically */
+    height: auto;
+    /* max-height: 90vh; */
+  }
+
+  .right-container {
+    width: 100%; /* Take up full width on small screens */
+    order: -1;
+  }
+
+  .left-container {
+    width: 100%;
+  }
+
+  .content-container {
+    text-align: center;
+  }
+
+  .bottom-container {
+    width: 100%;
+  }
+}
