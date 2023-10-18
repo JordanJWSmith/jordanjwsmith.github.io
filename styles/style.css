@@ -28,7 +28,6 @@ body {
   align-items: center; /* Center vertically */
   height: 100vh; 
   overflow: scroll;
-  margin: 20px;
 }
 
 .jumbotron {
@@ -41,8 +40,12 @@ body {
   /* align-items: flex-start; */
 }
 
+.display-4 {
+  font-size: 4vw;
+}
+
 .left-container {
-  width: 65%;
+  /* width: 65%; */
   padding: 20px; 
   display: flex;
   flex-direction: column;
@@ -78,7 +81,7 @@ body {
 }
 
 .right-container {
-  width: 35%;
+  /* width: 35%; */
   padding: 20px; 
   /* border: 1px solid black; */
   display: flex;
@@ -91,10 +94,11 @@ body {
   height: auto;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
 
   body {
     height: auto;
+    margin: 20px;
   }
 
   /* Change the layout on small screens (phones) */
@@ -103,6 +107,10 @@ body {
     height: auto;
     /* max-height: 100vh; */
     text-align: center;
+  }
+
+  .display-4 {
+    font-size: 7vw;
   }
 
   .right-container {
@@ -116,6 +124,14 @@ body {
 
   .content-container {
     text-align: center;
+  }
+
+  .lead {
+    font-size: 4vw;
+  }
+
+  .summary {
+    font-size: 3vw;
   }
 
   .bottom-container {
