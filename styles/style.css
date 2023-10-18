@@ -121,4 +121,8 @@ body {
   .bottom-container {
     width: 100%;
   }
+
+  #location {
+    justify-content: center;
+  }
 }
