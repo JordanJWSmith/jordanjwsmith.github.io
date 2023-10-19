@@ -154,6 +154,25 @@ body {
   font-size: 3.5vw;
 }
 
+.uncollapsed-home {
+  padding: var(--bs-navbar-toggler-padding-y) var(--bs-navbar-toggler-padding-x);
+  font-size: var(--bs-navbar-toggler-font-size);
+  color: var(--bs-navbar-color);
+  background-color: transparent;
+  border: var(--bs-border-width) solid var(--bs-navbar-toggler-border-color);
+  border-radius: var(--bs-navbar-toggler-border-radius);
+  transition: var(--bs-navbar-toggler-transition);
+}
+
+.navbar-nav a {
+  font-family: 'agrandir_bold';
+}
+
+.navbar-expand-lg .navbar-nav .nav-link {
+  padding-right: 5vw; 
+  padding-left: 5vw;
+}
+
 @keyframes textclip {
   to {
     background-position: 200% center;
@@ -162,7 +181,7 @@ body {
 
 @media (max-width: 1024px) {
 
-  body {
+  .landing {
     height: auto;
     margin-top: 20px;
   }
@@ -208,6 +227,10 @@ body {
 
   .bottom-container {
     width: 100%;
+  }
+
+  .bottom-container i {
+    font-size: 4vw; /* Adjust the size as needed */
   }
 
   #location {
