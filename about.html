@@ -12,6 +12,8 @@
     <link href="styles/style.css" rel="stylesheet" />
     <link rel="icon" href="/assets/images/favicon.ico" type="image/x-icon">
 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-WZL237HF4S"></script>
     <script>
@@ -21,9 +23,88 @@
 
         gtag('config', 'G-WZL237HF4S');
     </script>  
+
+    <!-- Timeline (https://codepen.io/alvarotrigo/pen/yLzBJaN) -->
+    <script>
+      (function ($) {
+        $(function () {
+
+
+          $(window).on('scroll', function () {
+            fnOnScroll();
+          });
+
+          $(window).on('resize', function () {
+            fnOnResize();
+          });
+
+
+          var agTimeline = $('.js-timeline'),
+            agTimelineLine = $('.js-timeline_line'),
+            agTimelineLineProgress = $('.js-timeline_line-progress'),
+            agTimelinePoint = $('.js-timeline-card_point-box'),
+            agTimelineItem = $('.js-timeline_item'),
+            agOuterHeight = $(window).outerHeight(),
+            agHeight = $(window).height(),
+            f = -1,
+            agFlag = false;
+
+          function fnOnScroll() {
+            agPosY = $(window).scrollTop();
+
+            fnUpdateFrame();
+          }
+
+          function fnOnResize() {
+            agPosY = $(window).scrollTop();
+            agHeight = $(window).height();
+
+            fnUpdateFrame();
+          }
+
+          function fnUpdateWindow() {
+            agFlag = false;
+
+            agTimelineLine.css({
+              top: agTimelineItem.first().find(agTimelinePoint).offset().top - agTimelineItem.first().offset().top,
+              bottom: agTimeline.offset().top + agTimeline.outerHeight() - agTimelineItem.last().find(agTimelinePoint).offset().top
+            });
+
+            f !== agPosY && (f = agPosY, agHeight, fnUpdateProgress());
+          }
+
+          function fnUpdateProgress() {
+            var agTop = agTimelineItem.last().find(agTimelinePoint).offset().top;
+
+            i = agTop + agPosY - $(window).scrollTop();
+            a = agTimelineLineProgress.offset().top + agPosY - $(window).scrollTop();
+            n = agPosY - a + agOuterHeight / 2;
+            i <= agPosY + agOuterHeight / 2 && (n = i - a);
+            agTimelineLineProgress.css({height: n + "px"});
+
+            agTimelineItem.each(function () {
+              var agTop = $(this).find(agTimelinePoint).offset().top;
+
+              (agTop + agPosY - $(window).scrollTop()) < agPosY + .5 * agOuterHeight ? $(this).addClass('js-ag-active') : $(this).removeClass('js-ag-active');
+            })
+          }
+
+          function fnUpdateFrame() {
+            agFlag || requestAnimationFrame(fnUpdateWindow);
+            agFlag = true;
+          }
+
+
+        });
+      })(jQuery);
+
+    </script>
+
+
 </head>
 
 <body>
+  <!-- navbar -->
   <nav class="navbar navbar-expand-lg navbar-light" style="padding-left:20px; padding-right: 20px; background-color: #d0c9c2;">
     <div class="uncollapsed-home" type="button"> 
           <a class="nav-item nav-link" href="index.html"><i class="bi bi-house-door-fill" width="30" height="30" alt="home"></i></a>
@@ -40,11 +121,12 @@
       </div>
     </div> 
   </nav>
-<!-- </div> -->
+
+  <!-- header -->
   <div class="jumbotron jumbotron-fluid"> 
     <div class="container">
-      <h1 class="display-4">About Me</h1>
-      <p>
+      <h1 class="display-4">ABOUT ME</h1>
+      <p class="copy-text">
         &#128075; I like building things to solve important problems. My background is in HealthTech, information assurance and B2B sales. 
         <br><br> 
         &#129659; I'm currently leading Product for <a href="https://behold.ai" target="_blank" style="color: black;">Behold.ai</a>, 
@@ -53,23 +135,445 @@
         and 
         <a href="https://www.digitalhealth.net/2022/08/ai-algorithm-somerset-lung-cancer/" target="_blank" style="color: black;">diagnose lung cancer more quickly</a>.
         <br><br>
-        &#128104;&#8205;&#127891; I hold an MSc in Computer Science from UCL and a BA in Music from Durham University. Outside of work I enjoy fitness, playing the sax and the occasional hackathon. 
+        &#128104;&#8205;&#127891; I hold an MSc in Computer Science from UCL and a BA in Music from Durham University. Outside of work I enjoy 
+        <a style="color: black;" href="https://www.strava.com/athletes/32430899">fitness,</a> 
+        <a style="color: black;" href="https://soundcloud.com/jordanjw-1">playing the sax</a> 
+        and the occasional hackathon. 
        </p>
        <br>
        <p class="lead">
-        <a class="btn btn-primary btn-lg" href="/assets/Jordan_Smith_CV_2023_9.pdf" role="button" style="background-color: #8b8682; border: 1px solid black" download>Download My CV</a>
+        <a class="btn btn-primary btn-sm" href="/assets/Jordan_Smith_CV_2023_9.pdf" role="button" style="background-color: #C78226; border: 1px solid black; " download>Download CV</a>
       </p>
       <hr class="my-4">
     </div>
   </div>
-<!--   
-  <div style="height: 90vh">
-      <h1 style="padding:20px">About Me</h1>
-      <br>
-      <br>
-      <p style="padding:20px">Coming soon...</p>
-  </div> -->
-  <div class="footer">
+
+  <!-- timeline -->
+  <div class="timeline-container">
+    <div class="ag-timeline-block">
+      <div class="ag-timeline_title-box">
+        <!-- <div class="ag-timeline_tagline">The Story So Far</div> -->
+        <p class="display-4" style="padding-top: 20px;">The Story So Far<p>
+        <!-- <div class="ag-timeline_title">No Flex</div> -->
+      </div>
+      <section class="ag-section">
+        <div class="ag-format-container">
+          <div class="js-timeline ag-timeline">
+            <div class="js-timeline_line ag-timeline_line">
+              <div class="js-timeline_line-progress ag-timeline_line-progress"></div>
+            </div>
+            <div class="ag-timeline_list">
+              <div class="js-timeline_item ag-timeline_item">
+                <div class="ag-timeline-card_box">
+                  <div class="js-timeline-card_point-box ag-timeline-card_point-box">
+                    <div class="ag-timeline-card_point"> . </div>
+                  </div>
+                  <div class="ag-timeline-card_meta-box">
+                    <div class="ag-timeline-card_meta">Behold.ai</div>
+                  </div>
+                </div>
+                <div class="ag-timeline-card_item">
+                  <div class="ag-timeline-card_inner">
+                    <div class="ag-timeline-card_img-box">
+                      <img src="assets/images/behold_1.jpeg" class="ag-timeline-card_img" width="640" height="360" />
+                    </div>
+                    <div class="ag-timeline-card_info">
+                      <div class="ag-timeline-card_title">Behold.ai</div>
+                      <div class="ag-timeline-card_desc">
+                      <p style="font-weight: bold; padding-bottom: 0">Technical Product Manager <br><a style="font-size: 12px; font-weight:normal">Apr 2022 + </a></p>  
+                        <p class="copy-text">
+                          Behold.ai is an AI MedTech startup. Over the last 18 months I have led product development for computer vision triage tools used to identify abnormalities in x-rays and CT scans.
+                          <br><br>
+                          I have overseen its introduction to market, successfully scaling from research phase to commercial deployment in four NHS Trusts across England and Wales. 
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="ag-timeline-card_arrow"></div>
+                </div>
+              </div>
+    
+              <div class="js-timeline_item ag-timeline_item">
+                <div class="ag-timeline-card_box">
+                  <div class="ag-timeline-card_meta-box">
+                    <div class="ag-timeline-card_meta">University College London</div>
+                  </div>
+                  <div class="js-timeline-card_point-box ag-timeline-card_point-box">
+                    <div class="ag-timeline-card_point">.</div>
+                  </div>
+                </div>
+                <div class="ag-timeline-card_item">
+                  <div class="ag-timeline-card_inner">
+                    <div class="ag-timeline-card_img-box">
+                      <img src="assets/images/ucl_compressed_2.jpg" class="ag-timeline-card_img" width="640" height="360" alt="" />
+                    </div>
+                    <div class="ag-timeline-card_info">
+                      <div class="ag-timeline-card_title">University College London</div>
+                      <div class="ag-timeline-card_desc">
+                        <p style="font-weight: bold; padding-bottom: 0">MSc CompSci<br><a style="font-size: 12px; font-weight:normal">Sep 2020 - Sep 2021 </a></p>  
+                        <p class="copy-text">
+                          I graduated from UCL with Distinction in MSc Computer Science, with a focus on machine learning and healthtech. 
+                          <br><br>My projects included 
+                          a lightweight custom CMS for IBM and the NHS, 
+                          a machine learning comparison toolkit,
+                          and a cross-platform app to help people with cystic fibrosis approach their treatmnent. 
+                        </p>
+                        
+                      </div>
+                    </div>
+                  </div>
+                  <div class="ag-timeline-card_arrow"></div>
+                </div>
+              </div>
+    
+              <div class="js-timeline_item ag-timeline_item">
+                <div class="ag-timeline-card_box">
+                  <div class="js-timeline-card_point-box ag-timeline-card_point-box">
+                    <div class="ag-timeline-card_point">.</div>
+                  </div>
+                  <div class="ag-timeline-card_meta-box">
+                    <div class="ag-timeline-card_meta">UK Government</div>
+                  </div>
+                </div>
+                <div class="ag-timeline-card_item">
+                  <div class="ag-timeline-card_inner">
+                    <div class="ag-timeline-card_img-box">
+                      <img src="assets/images/hm_gov_2.png" class="ag-timeline-card_img" width="640" height="360" alt="" />
+                    </div>
+                    <div class="ag-timeline-card_info">
+                      <div class="ag-timeline-card_title">UK Government</div>
+                      <div class="ag-timeline-card_desc">
+                        <p style="font-weight: bold; padding-bottom: 0">
+                          Cyber Security and Information Assurance (DV Cleared)
+                          <br>
+                          <a style="font-size: 12px; font-weight:normal">Mar 2019 - Sep 2020 </a>
+                        </p>  
+                        I managed the secure use of cryptographic items across UK public and private sectors. 
+                        <br><br>
+                        I was responsible for InfoSec incident reporting nationally, as well as leading subsequent investigations and incident response. 
+                      </div>
+                    </div>
+                  </div>
+                  <div class="ag-timeline-card_arrow"></div>
+                </div>
+              </div>
+    
+              <div class="js-timeline_item ag-timeline_item">
+                <div class="ag-timeline-card_box">
+                  <div class="ag-timeline-card_meta-box">
+                    <div class="ag-timeline-card_meta">Marston's PLC</div>
+                  </div>
+                  <div class="js-timeline-card_point-box ag-timeline-card_point-box">
+                    <div class="ag-timeline-card_point">.</div>
+                  </div>
+                </div>
+                <div class="ag-timeline-card_item">
+                  <div class="ag-timeline-card_inner">
+                    <div class="ag-timeline-card_img-box">
+                      <img src="assets/images/marstons.png" class="ag-timeline-card_img" width="640" height="360" alt="" />
+                    </div>
+                    <div class="ag-timeline-card_info">
+                      <div class="ag-timeline-card_title">Marston's PLC</div>
+                      <div class="ag-timeline-card_desc">
+                        <p style="font-weight: bold; padding-bottom: 0">
+                          Key Account Manager
+                          <br>
+                          <a style="font-size: 12px; font-weight:normal">Oct 2016 - Mar 2019 </a>
+                        </p>  
+                        I managed B2B sales for national bar and restaurant accounts. I developed relationships with clients, negotiated new contracts and managed a budget.
+                        I also managed sales pipelines for a team of Regional Sales Managers.
+                        <br><br>
+                        I was promoted from National Account Executive to Key Account Manager in 2018. 
+                      </div>
+                    </div>
+                  </div>
+                  <div class="ag-timeline-card_arrow"></div>
+                </div>
+              </div>
+    
+              <div class="js-timeline_item ag-timeline_item">
+                <div class="ag-timeline-card_box">
+                  <div class="js-timeline-card_point-box ag-timeline-card_point-box">
+                    <div class="ag-timeline-card_point">.</div>
+                  </div>
+                  <div class="ag-timeline-card_meta-box">
+                    <div class="ag-timeline-card_meta">Procter & Gamble</div>
+                  </div>
+                </div>
+                <div class="ag-timeline-card_item">
+                  <div class="ag-timeline-card_inner">
+                    <div class="ag-timeline-card_img-box">
+                      <img src="assets/images/procter_gamble.png" class="ag-timeline-card_img" width="640" height="360" alt="" />
+                    </div>
+                    <div class="ag-timeline-card_info">
+                      <div class="ag-timeline-card_title">Procter & Gamble</div>
+                      <div class="ag-timeline-card_desc">
+                        <p style="font-weight: bold; padding-bottom: 0">
+                          Sales Intern
+                          <br>
+                          <a style="font-size: 12px; font-weight:normal">Feb 2016 - Mar 2016 </a>
+                        </p> 
+                        I led three sales projects on category growth, pricing strategy and shrink prevention. 
+                        <br><br>
+                        I analysed raw national sales data across several supermarkets to gain business insights. 
+                        I created commercial proposals and presented them to category buyers. 
+                      </div>
+                    </div>
+                  </div>
+                  <div class="ag-timeline-card_arrow"></div>
+                </div>
+              </div>
+    
+              <div class="js-timeline_item ag-timeline_item">
+                <div class="ag-timeline-card_box">
+                  <div class="ag-timeline-card_meta-box">
+                    <div class="ag-timeline-card_meta">Durham University</div>
+                  </div>
+                  <div class="js-timeline-card_point-box ag-timeline-card_point-box">
+                    <div class="ag-timeline-card_point">.</div>
+                  </div>
+                </div>
+                <div class="ag-timeline-card_item">
+                  <div class="ag-timeline-card_inner">
+                    <div class="ag-timeline-card_img-box">
+                      <img src="/assets/images/durham_uni.jpg" class="ag-timeline-card_img" width="640" height="360" alt="" />
+                    </div>
+                    <div class="ag-timeline-card_info">
+                      <div class="ag-timeline-card_title">Durham University</div>
+                      <div class="ag-timeline-card_desc">
+                        <p style="font-weight: bold; padding-bottom: 0">
+                          BA Music
+                          <br>
+                          <a style="font-size: 12px; font-weight:normal">Sep 2012 - Aug 2015 </a>
+                        </p> 
+                        I graduated with 1st Class (Hons) in Music from Durham University. 
+                        <br><br>
+                        I focused on jazz performance and composition with tech, and I had my first introduction to the world of AI when I performed with Nick Collins' 
+                        <a style="font-style: italic; color: white;" href="https://composerprogrammer.com/music.html#:~:text=(May%202012)-,FinnSystem,-(April%202012)%20AI">FinnSystem</a>. 
+                        I still love to play the sax. 
+                      </div>
+                    </div>
+                  </div>
+                  <div class="ag-timeline-card_arrow"></div>
+                </div>
+              </div>
+              
+
+              <!--
+              <div class="js-timeline_item ag-timeline_item">
+                <div class="ag-timeline-card_box">
+                  <div class="js-timeline-card_point-box ag-timeline-card_point-box">
+                    <div class="ag-timeline-card_point">2018</div>
+                  </div>
+                  <div class="ag-timeline-card_meta-box">
+                    <div class="ag-timeline-card_meta">Season 7</div>
+                  </div>
+                </div>
+                <div class="ag-timeline-card_item">
+                  <div class="ag-timeline-card_inner">
+                    <div class="ag-timeline-card_img-box">
+                      <img src="https://raw.githubusercontent.com/SochavaAG/example-mycode/master/pens/timeline/images/img-7.png" class="ag-timeline-card_img" width="640" height="360" alt="" />
+                    </div>
+                    <div class="ag-timeline-card_info">
+                      <div class="ag-timeline-card_title">Season 7</div>
+                      <div class="ag-timeline-card_desc">
+                        Quisque rutrum. Aenean imperdiet. Etiam ultricies
+                        nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus.
+                        Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet
+                        adipiscing sem neque sed ipsum. Nam quam nunc, blandit vel, luctus pulvinar,
+                        hendrerit id, lorem. Maecenas nec odio et ante tincidunt tempus.
+                      </div>
+                    </div>
+                  </div>
+                  <div class="ag-timeline-card_arrow"></div>
+                </div>
+              </div>
+    
+              <div class="js-timeline_item ag-timeline_item">
+                <div class="ag-timeline-card_box">
+                  <div class="ag-timeline-card_meta-box">
+                    <div class="ag-timeline-card_meta">Season 6</div>
+                  </div>
+                  <div class="js-timeline-card_point-box ag-timeline-card_point-box">
+                    <div class="ag-timeline-card_point">2017</div>
+                  </div>
+                </div>
+                <div class="ag-timeline-card_item">
+                  <div class="ag-timeline-card_inner">
+                    <div class="ag-timeline-card_img-box">
+                      <img src="https://raw.githubusercontent.com/SochavaAG/example-mycode/master/pens/timeline/images/img-6.png" class="ag-timeline-card_img" width="640" height="360" alt="" />
+                    </div>
+                    <div class="ag-timeline-card_info">
+                      <div class="ag-timeline-card_title">Season 6</div>
+                      <div class="ag-timeline-card_desc">
+                        Vivamus elementum semper nisi. Aenean vulputate eleifend
+                        tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim.
+                        Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra
+                        nulla ut metus varius laoreet. Quisque rutrum.
+                      </div>
+                    </div>
+                  </div>
+                  <div class="ag-timeline-card_arrow"></div>
+                </div>
+              </div>
+    
+              <div class="js-timeline_item ag-timeline_item">
+                <div class="ag-timeline-card_box">
+                  <div class="js-timeline-card_point-box ag-timeline-card_point-box">
+                    <div class="ag-timeline-card_point">2017</div>
+                  </div>
+                  <div class="ag-timeline-card_meta-box">
+                    <div class="ag-timeline-card_meta">Season 5</div>
+                  </div>
+                </div>
+                <div class="ag-timeline-card_item">
+                  <div class="ag-timeline-card_inner">
+                    <div class="ag-timeline-card_img-box">
+                      <img src="https://raw.githubusercontent.com/SochavaAG/example-mycode/master/pens/timeline/images/img-5.png" class="ag-timeline-card_img" width="640" height="360" alt="" />
+                    </div>
+                    <div class="ag-timeline-card_info">
+                      <div class="ag-timeline-card_title">Season 5</div>
+                      <div class="ag-timeline-card_desc">
+                        Donec pede justo, fringilla
+                        vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a,
+                        venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer
+                        tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend
+                        tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim.
+                        Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra
+                        nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies
+                        nisi vel augue. Curabitur ullamcorper ultricies nisi.
+                      </div>
+                    </div>
+                  </div>
+                  <div class="ag-timeline-card_arrow"></div>
+                </div>
+              </div>
+    
+              <div class="js-timeline_item ag-timeline_item">
+                <div class="ag-timeline-card_box">
+                  <div class="ag-timeline-card_meta-box">
+                    <div class="ag-timeline-card_meta">Season 4</div>
+                  </div>
+                  <div class="js-timeline-card_point-box ag-timeline-card_point-box">
+                    <div class="ag-timeline-card_point">2016</div>
+                  </div>
+                </div>
+                <div class="ag-timeline-card_item">
+                  <div class="ag-timeline-card_inner">
+                    <div class="ag-timeline-card_img-box">
+                      <img src="https://raw.githubusercontent.com/SochavaAG/example-mycode/master/pens/timeline/images/img-4.png" class="ag-timeline-card_img" width="640" height="360" alt="" />
+                    </div>
+                    <div class="ag-timeline-card_info">
+                      <div class="ag-timeline-card_title">Season 4</div>
+                      <div class="ag-timeline-card_desc">
+                        Nullam dictum felis eu pede mollis pretium. Integer
+                        tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend
+                        tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim.
+                        Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra
+                        nulla ut metus varius laoreet.
+                      </div>
+                    </div>
+                  </div>
+                  <div class="ag-timeline-card_arrow"></div>
+                </div>
+              </div>
+    
+              <div class="js-timeline_item ag-timeline_item">
+                <div class="ag-timeline-card_box">
+                  <div class="js-timeline-card_point-box ag-timeline-card_point-box">
+                    <div class="ag-timeline-card_point">2016</div>
+                  </div>
+                  <div class="ag-timeline-card_meta-box">
+                    <div class="ag-timeline-card_meta">Season 3</div>
+                  </div>
+                </div>
+                <div class="ag-timeline-card_item">
+                  <div class="ag-timeline-card_inner">
+                    <div class="ag-timeline-card_img-box">
+                      <img src="https://raw.githubusercontent.com/SochavaAG/example-mycode/master/pens/timeline/images/img-3.png" class="ag-timeline-card_img" width="640" height="360" alt="" />
+                    </div>
+                    <div class="ag-timeline-card_info">
+                      <div class="ag-timeline-card_title">Season 3</div>
+                      <div class="ag-timeline-card_desc">
+                        Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus.
+                        Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet
+                        adipiscing sem neque sed ipsum. Nam quam nunc, blandit vel, luctus pulvinar,
+                        hendrerit id, lorem. Maecenas nec odio et ante tincidunt tempus. Donec vitae
+                        sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget
+                        eros faucibus tincidunt. Duis leo. Sed fringilla mauris sit amet nibh.
+                      </div>
+                    </div>
+                  </div>
+                  <div class="ag-timeline-card_arrow"></div>
+                </div>
+              </div>
+    
+              <div class="js-timeline_item ag-timeline_item">
+                <div class="ag-timeline-card_box">
+                  <div class="ag-timeline-card_meta-box">
+                    <div class="ag-timeline-card_meta">Season 2</div>
+                  </div>
+                  <div class="js-timeline-card_point-box ag-timeline-card_point-box">
+                    <div class="ag-timeline-card_point">2015</div>
+                  </div>
+                </div>
+                <div class="ag-timeline-card_item">
+                  <div class="ag-timeline-card_inner">
+                    <div class="ag-timeline-card_img-box">
+                      <img src="https://raw.githubusercontent.com/SochavaAG/example-mycode/master/pens/timeline/images/img-2.png" class="ag-timeline-card_img" width="640" height="360" />
+                    </div>
+                    <div class="ag-timeline-card_info">
+                      <div class="ag-timeline-card_title">Season 2</div>
+                      <div class="ag-timeline-card_desc">
+                        Aenean vulputate eleifend
+                        tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim.
+                        Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra
+                        nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies
+                        nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui.
+                      </div>
+                    </div>
+                  </div>
+                  <div class="ag-timeline-card_arrow"></div>
+                </div>
+              </div>
+    
+              <div class="js-timeline_item ag-timeline_item">
+                <div class="ag-timeline-card_box">
+                  <div class="js-timeline-card_point-box ag-timeline-card_point-box">
+                    <div class="ag-timeline-card_point">2015</div>
+                  </div>
+                  <div class="ag-timeline-card_meta-box">
+                    <div class="ag-timeline-card_meta">Season 1</div>
+                  </div>
+                </div>
+                <div class="ag-timeline-card_item">
+                  <div class="ag-timeline-card_inner">
+                    <div class="ag-timeline-card_img-box">
+                      <img src="https://raw.githubusercontent.com/SochavaAG/example-mycode/master/pens/timeline/images/img-1.png" class="ag-timeline-card_img" width="640" height="360" />
+                    </div>
+                    <div class="ag-timeline-card_info">
+                      <div class="ag-timeline-card_title">Season 1</div>
+                      <div class="ag-timeline-card_desc">
+                        Donec pede justo, fringilla
+                        vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a,
+                        venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer
+                        tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend
+                        tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim.
+                        Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus.
+                      </div>
+                    </div>
+                  </div>
+                  <div class="ag-timeline-card_arrow"></div>
+                </div>
+              </div> -->
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <div class="footer" style="position: relative">
     <p>Designed and built by Jordan Smith using plain old HTML and CSS</p>
 </div>
 
