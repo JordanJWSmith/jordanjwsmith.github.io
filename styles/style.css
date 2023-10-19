@@ -79,7 +79,7 @@ body {
 }
 
 .with-gradient {
-  background: linear-gradient(to bottom, #f3efec 90%, #e7dfd8 100%, transparent 100%);
+  background: linear-gradient(to bottom, #f3efec 95%, #e7dfd8 100%, transparent 100%);
 }
 
 .display-4 {
