@@ -1,6 +1,9 @@
 from bs4 import BeautifulSoup
 import os
 
+
+
+
 def extract_projects_info(filepath='/projects'):
     project_info = []
 
