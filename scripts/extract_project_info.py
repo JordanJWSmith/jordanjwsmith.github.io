@@ -17,12 +17,17 @@ def extract_projects_info(filepath='/projects'):
             imagefolder = None
             html_file = None
             title_tag = None
+            first_image = None
 
             for item in os.listdir(root):
                 item_path = os.path.join(root, item)
 
                 if os.path.isdir(item_path):
                     imagefolder = item
+                    if 'Untitled.png' in os.listdir(item_path):
+                        first_image = os.path.join(item_path, 'Untitled.png')
+                    
+
                     # print(os.listdir(item_path))
 
 
@@ -45,6 +50,7 @@ def extract_projects_info(filepath='/projects'):
                 project_info.append({
                     'directory_uuid': subdirectory_uuid, 
                     'image_foldername': imagefolder, 
+                    'first_image': first_image,
                     'html_file_uuid' : html_uuid,
                     'html_filepath': html_file, 
                     'title': title_tag})

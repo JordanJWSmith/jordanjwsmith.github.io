@@ -85,6 +85,6 @@ for project in project_info:
     container_to_edit.insert_after(BeautifulSoup(modal_content, "html.parser"))
 
 
-with open("test_output.html", "w") as output_file:
-    output_file.write(soup.prettify())
-    print('output file written')
+# with open("test_output.html", "w") as output_file:
+#     output_file.write(soup.prettify())
+#     print('output file written')

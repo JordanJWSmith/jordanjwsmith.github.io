@@ -23,7 +23,7 @@ def rename_files_replace_spaces(filepath='/projects'):
                     # print(item_path)
                     # print(os.listdir(item_path))
 
-rename_files_replace_spaces('./projects')
+# rename_files_replace_spaces('./projects')
 
 
 
@@ -51,7 +51,7 @@ def compress_images(filepath="/projects", quality=10):
                 if item.lower().endswith(".png"):
                     # print('image: ', item)
                     input_path = os.path.join(root, item)
-                    output_path = os.path.join(root, f'compressed_{item}')
+                    output_path = os.path.join(root, item)
                     # print('image: ', output_path)
 
                     quality = 10
