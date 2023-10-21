@@ -37,7 +37,8 @@ for project in project_info:
     for element in modal_article.find_all():
         if element.has_attr('src'):
             if os.path.splitext(element['src'])[-1] in include:
-                element['src'] = given_filepath + element['src']
+                element['src'] = given_filepath + element['src'].replace('%20', '_')
+                element['style'] = "width: 100%"
                 # print(element['src'])
 
         if element.has_attr('href'):

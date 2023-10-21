@@ -8,19 +8,22 @@ def rename_files_replace_spaces(filepath='/projects'):
                 item_path = os.path.join(root, item)
                 if ' ' in item:
                     new_filename = item.replace(' ', '_')
+
                     # Construct the full paths for the old and new filenames
-                    old_filepath = os.path.join(item_path, item)
-                    new_filepath = os.path.join(item_path,  new_filename)
+                    old_filepath = os.path.join(root, item)
+                    new_filepath = os.path.join(root,  new_filename)
+                    # print(old_filepath)
+                    # print(new_filepath)
                     # Rename the file
                     os.rename(old_filepath, new_filepath)
-                    # print(f'Renamed: {item} -> {new_filename}')
+                    print(f'Renamed: {item} -> {new_filename}')
 
 
                 # if os.path.isdir(item_path):
                     # print(item_path)
                     # print(os.listdir(item_path))
 
-# rename_files_replace_spaces('./projects')
+rename_files_replace_spaces('./projects')
 
 
 
