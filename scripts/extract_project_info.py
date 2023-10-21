@@ -1,4 +1,5 @@
 from bs4 import BeautifulSoup
+from PIL import Image
 import os
 
 def extract_projects_info(filepath='/projects'):
@@ -16,6 +17,18 @@ def extract_projects_info(filepath='/projects'):
 
             for item in os.listdir(root):
                 item_path = os.path.join(root, item)
+
+                if item.lower().endswith(".png"):
+                    # print('image: ', item)
+                    input_path = os.path.join(root, item)
+                    output_path = os.path.join(root, f'compressed_{item}')
+                    # print('image: ', output_path)
+
+                    quality = 10
+                    # # Open the image and save it with the specified quality
+                    img = Image.open(input_path)
+                    print('saving', output_path)
+                    img.save(output_path, optimize=True, quality=quality)
 
                 if os.path.isdir(item_path):
                     imagefolder = item
@@ -45,7 +58,7 @@ def extract_projects_info(filepath='/projects'):
     return project_info
 
 # Example usage
-# projects_info = extract_projects_info('./projects')
+projects_info = extract_projects_info('./projects')
 
 # print(projects_info)
 # for info in projects_info:
