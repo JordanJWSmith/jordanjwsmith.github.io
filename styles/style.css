@@ -148,6 +148,10 @@ body {
   color: #b9b2ad
 }
 
+.figure image {
+  width: 100%;
+}
+
 .animate-charcter
 {
   text-transform: uppercase;

@@ -1,6 +1,9 @@
 import os
 from bs4 import BeautifulSoup
 from extract_project_info import extract_projects_info
+from compress_images import rename_files_replace_spaces
+
+rename_files_replace_spaces()
 
 project_info = extract_projects_info('./projects')
 
@@ -44,7 +47,7 @@ for project in project_info:
             # print(os.path.splitext(element['href'])[-1])
             # print(element['href'])
 
-    print(modal_article)
+    # print(modal_article)
 
     # given_filepath = f'projects/{dir_uuid}/'
 
