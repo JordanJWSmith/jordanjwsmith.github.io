@@ -27,15 +27,17 @@ def extract_projects_info(filepath='/projects'):
                     html_file = os.path.join(root, item)
                     html_uuid = os.path.splitext(item.split(' ')[-1])[0]
 
-                    print(item, html_uuid)
+                    # print(item, html_uuid)
                     
 
                     with open(item_path) as f:
                         modal_content = f.read()
                         soup = BeautifulSoup(modal_content, "html.parser")
                         title_tag = soup.find("title").string
-            
+
             if all([subdirectory_uuid, imagefolder, html_file, title_tag]):
+
+                # print(f'.projects/{subdirectory_uuid}/{imagefolder}')
 
                 project_info.append({
                     'directory_uuid': subdirectory_uuid, 

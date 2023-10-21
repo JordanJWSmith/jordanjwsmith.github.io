@@ -1,3 +1,4 @@
+import os
 from bs4 import BeautifulSoup
 from extract_project_info import extract_projects_info
 
@@ -25,22 +26,89 @@ for project in project_info:
 
     modal_soup = BeautifulSoup(modal_html_content, "html.parser")
     modal_article = modal_soup.find("article")
+
+    given_filepath = f'projects/{dir_uuid}/'
+
+    include = ['.png', '.gif']
+
+    for element in modal_article.find_all():
+        if element.has_attr('src'):
+            if os.path.splitext(element['src'])[-1] in include:
+                element['src'] = given_filepath + element['src']
+                # print(element['src'])
+
+        if element.has_attr('href'):
+            if os.path.splitext(element['href'])[-1]in include:
+                element['href'] = given_filepath + element['href']
+            # if os.path.splitext()
+            # print(os.path.splitext(element['href'])[-1])
+            # print(element['href'])
+
+    print(modal_article)
+
+    # given_filepath = f'projects/{dir_uuid}/'
+
+    # for modal_body_element in modal_article.find_all(class_="modal-body"):
+    #     for element in modal_body_element.find_all(['src', 'href']):
+    #         if element.has_attr('src'):
+    #             element['src'] = given_filepath + element['src']
+    #             print(element)
+    #         if element.has_attr('href'):
+    #             element['href'] = given_filepath + element['href']
+    #             print(element)
+
+    # print(modal_article.prettify())
+
+    # def prepend_filepath_to_links(modal_html_content, given_filepath):
+    #     modal_soup = BeautifulSoup(modal_html_content, "html.parser")
+    #     modal_article = modal_soup.find("article")
+
+    #     for modal_body_element in modal_article.find_all(class_="modal-body"):
+    #         for element in modal_body_element.find_all(['src', 'href']):
+    #             if element.has_attr('src'):
+    #                 element['src'] = given_filepath + element['src']
+    #             if element.has_attr('href'):
+    #                 element['href'] = given_filepath + element['href']
+
+        # Return the modified modal_article
+        # return modal_article.prettify()
     
-    # elements_with_src = soup.find_all(src=True)
-    # elements_with_href = soup.find_all(href=True)
-
-    # given_filepath = f'./projects/{dir_uuid}'
-
-    # for element in elements_with_src:
-    #     current_src = element['src']
-    #     element['src'] = given_filepath + current_src
-
-    # for element in elements_with_href:
-    #     current_href = element['href']
-    #     element['href'] = given_filepath + current_href
-
-
+    # modal_body_elements = modal_article.find_all(class_="modal-body")
     
+    # elements_with_src = modal_body_elements.find_all(src=True)
+    # elements_with_href = modal_body_elements.find_all(href=True)
+
+    # given_filepath = f'projects/{dir_uuid}/'
+
+    # for modal_body_element in modal_body_elements:
+    #     elements_with_src = modal_body_element.find_all(src=True)
+    #     elements_with_href = modal_body_element.find_all(href=True)
+
+    #     for element in elements_with_src:
+    #         current_src = element['src']
+    #         element['src'] = given_filepath + current_src
+
+    #     for element in elements_with_href:
+    #         current_href = element['href']
+    #         element['href'] = given_filepath + current_href
+    
+    # print(modal_body_elements)
+
+    # for modal_body_element in modal_body_elements:
+    #     modal_body_element.replace_with(modal_body_element)
+
+    # Now modal_article contains the changes
+    # print(modal_article.prettify()) 
+
+
+    # Convert the modified BeautifulSoup object back to an HTML string
+    # modified_html_content = modal_soup.prettify()
+    # print(modified_html_content)
+
+    # Update the modal_html_content with the modified content
+    # modal_html_content = modified_html_content
+    # print(modal_article)
+
 
     project_card = f"""
     <div class="col-md-6 col-lg-3 mb-4">
