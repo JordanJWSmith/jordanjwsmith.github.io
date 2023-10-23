@@ -1,7 +1,7 @@
 from PIL import Image
 import os
 
-def rename_files_replace_spaces(filepath='/projects'):
+def rename_files_replace_spaces(filepath='./projects'):
     for root, _, _ in os.walk(filepath):
         if root != filepath:
             for item in os.listdir(root):
@@ -14,6 +14,8 @@ def rename_files_replace_spaces(filepath='/projects'):
 
                     os.rename(old_filepath, new_filepath)
                     print(f'Renamed: {item} -> {new_filename}')
+
+rename_files_replace_spaces()
 
 
 
