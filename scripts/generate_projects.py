@@ -6,6 +6,7 @@ from compress_images import rename_files_replace_spaces
 rename_files_replace_spaces()
 
 # TODO: Order projects by date
+# TODO: insert title card image and mount on fixed background
 
 project_info = extract_projects_info('./projects')
 
@@ -32,10 +33,7 @@ for project in project_info:
     modal_soup = BeautifulSoup(modal_html_content, "html.parser")
     modal_article = modal_soup.find("article")
 
-    
-
     given_filepath = f'projects/{dir_uuid}/'
-
     include = ['.png', '.gif']
 
     for element in modal_article.find_all():
@@ -80,8 +78,6 @@ for project in project_info:
     </div>
         """
 
-
-    
     container_to_edit = soup.find("div", {"id": "project_card_container"})
     container_to_edit.append(BeautifulSoup(project_card, "html.parser"))
 

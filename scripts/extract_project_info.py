@@ -1,4 +1,5 @@
 from bs4 import BeautifulSoup
+from compress_images import resize
 import os
 
 
@@ -25,10 +26,9 @@ def extract_projects_info(filepath='/projects'):
                 if os.path.isdir(item_path):
                     imagefolder = item
                     if 'Untitled.png' in os.listdir(item_path):
-                        first_image = os.path.join(item_path, 'Untitled.png')
-                        print(first_image)
-                    
-
+                        raw_image = os.path.join(item_path, 'Untitled.png')
+                        first_image = resize(raw_image, 1200, 600)
+                        
                     # print(os.listdir(item_path))
 
 
