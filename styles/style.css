@@ -1240,4 +1240,31 @@ blockquote {
 table {
   word-break: break-word;
 }
+
+.custom-im-width {
+  width: 30%;
+}
+
+
+.custom-text-width {
+  width: 70%;
+}
  
+ 
+@media (max-width: 768px) {
+  .custom-im-width {
+    width: 100%;
+  }
+
+  .custom-text-width {
+    width: 1000%;
+  }
+}
+
+/* .btn btn-primary btn-md px-4 me-md-2 {
+  width: min-content;
+}
+
+.selected-value select-value-color-green {
+  width: min-content;
+} */
