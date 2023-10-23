@@ -1,18 +1,35 @@
 from bs4 import BeautifulSoup
 from compress_images import resize
+import json
 import os
+
+
+def get_project_descriptions(filepath='project_descriptions.json'):
+    if os.path.exists(filepath):
+        with open(filepath, 'r') as file:
+            project_descriptions = json.load(file)
+    else:
+        project_descriptions = {}
+
+    return project_descriptions
 
 
 
 
 def extract_projects_info(filepath='/projects'):
     project_info = []
+    project_descriptions = get_project_descriptions()
 
     for root, _, _ in os.walk(filepath):
         if root != filepath:
 
-            # Extract subdirectory UUID
             subdirectory_uuid = os.path.basename(root)
+
+            if subdirectory_uuid not in project_descriptions.keys() and os.path.split(root)[0] == filepath:
+                project_descriptions[subdirectory_uuid] = ""
+
+                with open('project_descriptions.json', 'w') as f:
+                    json.dump(project_descriptions, f, indent=4)
 
             # Extract subdirectory contents
             imagefolder = None
@@ -25,9 +42,12 @@ def extract_projects_info(filepath='/projects'):
 
                 if os.path.isdir(item_path):
                     imagefolder = item
-                    if 'Untitled.png' in os.listdir(item_path):
+                    if 'Untitled.png' in os.listdir(item_path) and 'Untitled_titlecard.png' not in os.listdir(item_path):
                         raw_image = os.path.join(item_path, 'Untitled.png')
                         first_image = resize(raw_image, 1200, 600)
+                    else:
+                        raw_image = os.path.join(item_path, 'Untitled.png')
+                        first_image = os.path.splitext(raw_image)[0]+'_titlecard' + os.path.splitext(raw_image)[1]
                         
                     # print(os.listdir(item_path))
 
@@ -58,4 +78,4 @@ def extract_projects_info(filepath='/projects'):
 
     return project_info
 
-projects_info = extract_projects_info('./projects')
+# projects_info = extract_projects_info('./projects')

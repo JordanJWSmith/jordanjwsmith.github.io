@@ -1,0 +1,10 @@
+{
+    "8600fb50-8c9c-42e2-a391-48d560ee60d7":
+     "A mobile app that generates lyric-inspired artwork from a given song",
+    "a10afcf2-a217-43f1-8d2f-0430f578e23c_Export-b861e1b0-0fa3-457b-bcc6-231ec8dd4601": 
+    "An app to generate lyric-inspired images using stable diffusion",
+    "dfc0cbc4-aa01-417b-9691-e4f5fdcf19fc": 
+    "An image-labelling toolkit for Python's ImageFolder framework",
+    "5f1b773b-2dff-4dd4-a203-715739f9befb": 
+    "Generate 30-second video summaries for podcasts"
+}
