@@ -5,6 +5,8 @@ from compress_images import rename_files_replace_spaces
 
 rename_files_replace_spaces()
 
+# TODO: Order projects by date
+
 project_info = extract_projects_info('./projects')
 
 with open("./skeletons/projects/projects_head.html", "r") as f:
@@ -16,6 +18,7 @@ for project in project_info:
 
     dir_uuid = project['directory_uuid']
     image_foldername = project['image_foldername']
+    title_image = project['first_image']
     html_filepath = project['html_filepath']
     html_uuid = project['html_file_uuid']
     title = project['title']
@@ -48,7 +51,7 @@ for project in project_info:
     project_card = f"""
     <div class="col-md-6 col-lg-3 mb-4">
         <div class="card">
-            <img src="assets/images/ucl_compressed_2.jpg" class="card-img-top" alt="...">
+            <img src={title_image} class="card-img-top" alt="...">
             <div class="card-body">
                 <h5 class="card-title">{title}</h5>
                 <p class="card-text">Info about {title}</p>
@@ -85,6 +88,6 @@ for project in project_info:
     container_to_edit.insert_after(BeautifulSoup(modal_content, "html.parser"))
 
 
-with open("projects.html", "w") as output_file:
+with open("test_output.html", "w") as output_file:
     output_file.write(soup.prettify())
     print('output file written')

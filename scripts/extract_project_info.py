@@ -26,6 +26,7 @@ def extract_projects_info(filepath='/projects'):
                     imagefolder = item
                     if 'Untitled.png' in os.listdir(item_path):
                         first_image = os.path.join(item_path, 'Untitled.png')
+                        print(first_image)
                     
 
                     # print(os.listdir(item_path))
