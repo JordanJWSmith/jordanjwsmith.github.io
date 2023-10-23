@@ -1,4 +1,5 @@
 import os
+import json
 from bs4 import BeautifulSoup
 from extract_project_info import extract_projects_info
 from compress_images import rename_files_replace_spaces
@@ -6,9 +7,11 @@ from compress_images import rename_files_replace_spaces
 rename_files_replace_spaces()
 
 # TODO: Order projects by date
-# TODO: insert title card image and mount on fixed background
 
 project_info = extract_projects_info('./projects')
+
+with open('./project_descriptions.json') as f:
+    project_descriptions = json.load(f)
 
 with open("./skeletons/projects/projects_head.html", "r") as f:
     html_content = f.read()
@@ -52,7 +55,7 @@ for project in project_info:
             <img src={title_image} class="card-img-top" alt="...">
             <div class="card-body">
                 <h5 class="card-title">{title}</h5>
-                <p class="card-text">Info about {title}</p>
+                <p class="card-text">{project_descriptions[dir_uuid]}</p>
                 <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#{title_string}">More</button>
             </div>
         </div>
