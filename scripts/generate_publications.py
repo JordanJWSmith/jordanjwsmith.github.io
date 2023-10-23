@@ -59,7 +59,7 @@ for publication in sorted_publication_descriptions:
     jumbotron = soup.find("div", {"id": "title_jumbotron"})
     jumbotron.insert_after(BeautifulSoup(publication_card, "html.parser"))
 
-with open("test_output.html", "w") as output_file:
+with open("publications.html", "w") as output_file:
     output_file.write(soup.prettify())
     print('output file written')
     
