@@ -60,7 +60,7 @@ for project in sorted_project_info:
             <div class="card-body">
                 <h5 class="card-title">{title}</h5>
                 <p class="card-text">{project_descriptions[dir_uuid]}</p>
-                <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#{title_string}">More</button>
+                <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#{title_string}" style="background-color: #C78226; border: 1px solid black;">More</button>
             </div>
         </div>
             </div>
