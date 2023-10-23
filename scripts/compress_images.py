@@ -69,3 +69,14 @@ def resize(image_file, width, height):
     background.convert('RGB').save(save_path)
 
     return save_path
+
+
+def crop_to_fit(image_file):
+    img = Image.open(image_file)
+    width = img.size[0]
+    height = img.size[1]
+    box = (0, (height - width // 2) // 2, width, (height + width // 2) // 2)
+    cropped_img = img.crop(box)
+    
+    save_path = os.path.splitext(image_file)[0]+'_titlecard' + os.path.splitext(image_file)[1]
+    cropped_img.save(save_path)

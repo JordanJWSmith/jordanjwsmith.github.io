@@ -1,6 +1,8 @@
+import os
 import json
 from bs4 import BeautifulSoup
 from extract_project_info import sort_by_date
+from compress_images import crop_to_fit
 
 # TODO: publication images
 
@@ -21,13 +23,23 @@ tag_colours = {
 }
 
 for publication in sorted_publication_descriptions:
+
+    image_path = publication['image']
+
+    # if not len(image_path):
+    #     image_path = "projects/5f1b773b-2dff-4dd4-a203-715739f9befb/Dancing_Spider_72c42e5df4ba4858ae33287f69456bba/Untitled_titlecard.png"
+
+    titlecard_image_path = os.path.splitext(image_path)[0]+'_titlecard' + os.path.splitext(image_path)[1]
+
+    if not os.path.exists(titlecard_image_path):
+        titlecard_image_path = crop_to_fit(image_path)
     
     publication_card = f"""
 
     <div class="container col-xxl-8 px-4" style="background-color: #ffffff; padding-top: 1rem; padding-bottom: 1rem; margin-top: 10px; margin-bottom: 10px;">
         <div class="row align-items-center">
             <div class="col-12 col-md-6 custom-im-width">
-                <img src="projects/5f1b773b-2dff-4dd4-a203-715739f9befb/Dancing_Spider_72c42e5df4ba4858ae33287f69456bba/Untitled_titlecard.png" class="d-block mx-lg-auto img-fluid" alt="Bootstrap Themes" width="700" height="500" loading="lazy">
+                <img src={titlecard_image_path} class="d-block mx-lg-auto img-fluid" alt="Bootstrap Themes" width="700" height="500" loading="lazy">
             </div>
             <div class="col-12 col-md-6 custom-text-width">
                 <p class="copy-text" style="font-weight: bold">{publication['title']}</p>
