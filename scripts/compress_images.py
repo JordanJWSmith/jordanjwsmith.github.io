@@ -2,10 +2,13 @@ from PIL import Image
 import os
 
 def rename_files_replace_spaces(filepath='./projects'):
+    """
+    Walk through the directory and replace any spaces with underscores. 
+    Otherwise this causes trouble with <src> and <href> tags. 
+    """
     for root, _, _ in os.walk(filepath):
         if root != filepath:
             for item in os.listdir(root):
-                # item_path = os.path.join(root, item)
                 if ' ' in item:
                     new_filename = item.replace(' ', '_')
 
@@ -20,6 +23,9 @@ rename_files_replace_spaces()
 
 
 def compress_images(filepath="/projects", quality=10):
+    """
+    Compress any images in a given directory
+    """
     for root, _, _ in os.walk(filepath):
         if root != filepath:
 
