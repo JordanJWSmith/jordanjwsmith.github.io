@@ -1,24 +1,26 @@
 import os
 import json
 from bs4 import BeautifulSoup
-from extract_project_info import extract_projects_info
+from extract_project_info import extract_projects_info, sort_by_date
 from compress_images import rename_files_replace_spaces
 
 rename_files_replace_spaces()
 
-# TODO: Order projects by date
-
+# get data for each project and sort by creation date
 project_info = extract_projects_info('./projects')
-
+sorted_project_info = sorted(project_info, key=sort_by_date, reverse=True)
+    
+# get the title descrptions
 with open('./project_descriptions.json') as f:
     project_descriptions = json.load(f)
 
+# load the empty project page
 with open("./skeletons/projects/projects_head.html", "r") as f:
     html_content = f.read()
 
 soup = BeautifulSoup(html_content, "html.parser")
 
-for project in project_info:
+for project in sorted_project_info:
 
     dir_uuid = project['directory_uuid']
     image_foldername = project['image_foldername']
@@ -30,12 +32,14 @@ for project in project_info:
 
     print('writing', title)
 
+    # get the html content for the project
     with open(html_filepath, "r") as f:
         modal_html_content = f.read()
 
     modal_soup = BeautifulSoup(modal_html_content, "html.parser")
     modal_article = modal_soup.find("article")
 
+    # amend the filepaths so it can find the images
     given_filepath = f'projects/{dir_uuid}/'
     include = ['.png', '.gif']
 
@@ -87,6 +91,6 @@ for project in project_info:
     container_to_edit.insert_after(BeautifulSoup(modal_content, "html.parser"))
 
 
-with open("test_output.html", "w") as output_file:
+with open("projects.html", "w") as output_file:
     output_file.write(soup.prettify())
     print('output file written')

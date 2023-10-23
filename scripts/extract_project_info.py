@@ -1,4 +1,5 @@
 from bs4 import BeautifulSoup
+from datetime import datetime
 from compress_images import resize
 import json
 import os
@@ -14,6 +15,10 @@ def get_project_descriptions(filepath='project_descriptions.json'):
     return project_descriptions
 
 
+def sort_by_date(item):
+    date_str = item['time'][1:]  
+    date_format = "%B %d, %Y %I:%M %p"
+    return datetime.strptime(date_str, date_format)
 
 
 def extract_projects_info(filepath='/projects'):
@@ -36,6 +41,7 @@ def extract_projects_info(filepath='/projects'):
             html_file = None
             title_tag = None
             first_image = None
+            time = None
 
             for item in os.listdir(root):
                 item_path = os.path.join(root, item)
@@ -56,6 +62,16 @@ def extract_projects_info(filepath='/projects'):
                     html_file = os.path.join(root, item)
                     html_uuid = os.path.splitext(item.split(' ')[-1])[0]
 
+                    with open(html_file, "r") as f:
+                        modal_html_content = f.read()
+
+                    modal_soup = BeautifulSoup(modal_html_content, "html.parser")
+                    modal_article = modal_soup.find("article")
+
+                    time = modal_article.find("time")
+                    # date_format = "@%B %d, %Y %I:%M %p"
+                    time = time.text.strip()
+
                     # print(item, html_uuid)
                     
 
@@ -74,7 +90,9 @@ def extract_projects_info(filepath='/projects'):
                     'first_image': first_image,
                     'html_file_uuid' : html_uuid,
                     'html_filepath': html_file, 
-                    'title': title_tag})
+                    'title': title_tag,
+                    'time': time})
+                
 
     return project_info
 
