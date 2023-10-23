@@ -16,7 +16,7 @@ def get_project_descriptions(filepath='project_descriptions.json'):
 
 
 def sort_by_date(item):
-    date_str = item['time'][1:]  
+    date_str = item['date']  
     date_format = "%B %d, %Y %I:%M %p"
     return datetime.strptime(date_str, date_format)
 
@@ -70,7 +70,7 @@ def extract_projects_info(filepath='/projects'):
 
                     time = modal_article.find("time")
                     # date_format = "@%B %d, %Y %I:%M %p"
-                    time = time.text.strip()
+                    time = time.text.strip()[1:]
 
                     # print(item, html_uuid)
                     
@@ -91,7 +91,7 @@ def extract_projects_info(filepath='/projects'):
                     'html_file_uuid' : html_uuid,
                     'html_filepath': html_file, 
                     'title': title_tag,
-                    'time': time})
+                    'date': time})
                 
 
     return project_info
