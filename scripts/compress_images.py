@@ -18,11 +18,11 @@ def rename_files_replace_spaces(filepath='./projects'):
                     os.rename(old_filepath, new_filepath)
                     print(f'Renamed: {item} -> {new_filename}')
 
-rename_files_replace_spaces()
+# rename_files_replace_spaces()
 
 
 
-def compress_images(filepath="/projects", quality=10):
+def compress_images(filepath="./projects", quality=10):
     """
     Compress any images in a given directory
     """
@@ -38,6 +38,8 @@ def compress_images(filepath="/projects", quality=10):
                     img = Image.open(input_path)
                     print('saving', output_path)
                     img.save(output_path, optimize=True, quality=quality)
+
+# compress_images()
 
 
 def resize(image_file, width, height):

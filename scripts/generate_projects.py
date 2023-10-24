@@ -56,7 +56,7 @@ for project in sorted_project_info:
     project_card = f"""
     <div class="col-md-6 col-lg-3 mb-4">
         <div class="card">
-            <img src={title_image} class="card-img-top" alt="...">
+            <img src={title_image} class="card-img-top" alt="..." loading="lazy">
             <div class="card-body">
                 <h5 class="card-title">{title}</h5>
                 <p class="card-text">{project_descriptions[dir_uuid]}</p>
