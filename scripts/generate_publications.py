@@ -4,7 +4,7 @@ from bs4 import BeautifulSoup
 from extract_project_info import sort_by_date
 from compress_images import crop_to_fit
 
-# TODO: publication images
+# TODO: add 'notes' modal
 
 with open('./publications/publication_info.json') as f:
     publication_descriptions = json.load(f)
@@ -18,8 +18,8 @@ soup = BeautifulSoup(html_content, "html.parser")
 
 tag_colours = {
     'Research Paper': 'green',
-    'Professional Blog': 'grey',
-    'Dev Blog': 'orange'
+    'Professional Blog': 'orange',
+    'Dev Blog': 'blue'
 }
 
 for publication in sorted_publication_descriptions:
