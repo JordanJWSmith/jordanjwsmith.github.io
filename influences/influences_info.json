@@ -1,0 +1,50 @@
+[
+    {
+        "title": "Forcing Your Computer to Rat You Out",
+        "date": "August 02, 2023 12:00 PM",
+        "authors": "Cory Doctorow",
+        "url": "https://pluralistic.net/2023/08/02/self-incrimination/#wei-bai-bai",
+        "tag": ["Article", "Digital Philosophy"],
+        "image": "influences/influences_images/doctorow.png"
+    },
+    {
+        "title": "It's time for Anglofuturism",
+        "date": "August 29, 2022 12:00 PM",
+        "authors": "Aris Roussinos",
+        "url": "https://unherd.com/2022/08/its-time-for-anglofuturism/",
+        "tag": ["Article", "Policy"],
+        "image": "influences/influences_images/doctorow.png"
+    },
+    {
+        "title": "Quit Your Job",
+        "date": "January 6, 2022 12:00 PM",
+        "authors": "Wolf Tivy",
+        "url": "https://www.palladiummag.com/2022/01/06/quit-your-job/",
+        "tag": ["Article", "Growth"],
+        "image": "influences/influences_images/roussinos.png"
+    },
+    {
+        "title": "The Only Reason to Explore Space",
+        "date": "August 16, 2023 12:00 PM",
+        "authors": "Marko Jukic",
+        "url": "https://www.palladiummag.com/2023/08/16/the-only-reason-to-explore-space/",
+        "tag": ["Article", "Growth"],
+        "image": "influences/influences_images/jucik.png"
+    },
+    {
+        "title": "People Vs Tech: How the internet is killing democracy (and how we can save it)",
+        "date": "April 19, 2018 12:00 PM",
+        "authors": "Jamie Bartlett",
+        "url": "https://www.amazon.co.uk/People-Vs-Tech-internet-democracy/dp/1785039067",
+        "tag": ["Book", "Digital Policy"],
+        "image": "influences/influences_images/bartlett.png"
+    },
+    {
+        "title": "The Third Magic",
+        "date": "January 1, 2023 12:00 PM",
+        "authors": "Noah Smith",
+        "url": "https://www.noahpinion.blog/p/the-third-magic",
+        "tag": ["Book", "Digital Philosophy"],
+        "image": "influences/influences_images/bartlett.png"
+    }
+]
