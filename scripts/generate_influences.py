@@ -19,7 +19,8 @@ soup = BeautifulSoup(html_content, "html.parser")
 tag_colours = {
     'Digital Philosophy': 'blue',
     'Policy': 'orange',
-    'Growth': 'green',
+    'Acceleration': 'yellow',
+    'Building': 'green',
     'Article': 'red',
     "Book": 'purple'
 }
@@ -32,6 +33,7 @@ for publication in sorted_publication_descriptions:
     titlecard_image_path = os.path.splitext(image_path)[0]+'_titlecard' + os.path.splitext(image_path)[1]
 
     if not os.path.exists(titlecard_image_path):
+        print('cropping', image_path)
         titlecard_image_path = crop_to_fit(image_path)
 
     tag_section = ""

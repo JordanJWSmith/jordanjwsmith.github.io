@@ -26,9 +26,6 @@ for publication in sorted_publication_descriptions:
 
     image_path = publication['image']
 
-    # if not len(image_path):
-    #     image_path = "projects/5f1b773b-2dff-4dd4-a203-715739f9befb/Dancing_Spider_72c42e5df4ba4858ae33287f69456bba/Untitled_titlecard.png"
-
     titlecard_image_path = os.path.splitext(image_path)[0]+'_titlecard' + os.path.splitext(image_path)[1]
 
     if not os.path.exists(titlecard_image_path):
@@ -44,6 +41,7 @@ for publication in sorted_publication_descriptions:
             <div class="col-12 col-md-6 custom-text-width">
                 <p class="copy-text" style="font-weight: bold">{publication['title']}</p>
                 <p class="copy-text">{publication['authors']}</p>
+                <p class="copy-text" style="font-size: small; color: grey">{publication['date'][:-8]}</p>
                 
                 <div class="d-flex flex-wrap align-items-center">
                     <a href={publication['url']} target="_blank">

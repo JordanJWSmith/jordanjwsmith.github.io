@@ -20,7 +20,7 @@
         "date": "January 6, 2022 12:00 PM",
         "authors": "Wolf Tivy",
         "url": "https://www.palladiummag.com/2022/01/06/quit-your-job/",
-        "tag": ["Article", "Growth"],
+        "tag": ["Article", "Acceleration"],
         "image": "influences/influences_images/tivy.png"
     },
     {
@@ -28,7 +28,7 @@
         "date": "August 16, 2023 12:00 PM",
         "authors": "Marko Jukic",
         "url": "https://www.palladiummag.com/2023/08/16/the-only-reason-to-explore-space/",
-        "tag": ["Article", "Growth"],
+        "tag": ["Article", "Acceleration"],
         "image": "influences/influences_images/jukic.png"
     },
     {
@@ -46,5 +46,29 @@
         "url": "https://www.noahpinion.blog/p/the-third-magic",
         "tag": ["Article", "Digital Philosophy"],
         "image": "influences/influences_images/smith.png"
+    },
+    {
+        "title": "Listen Better: Notes on Building an Attentive Startup",
+        "date": "October 20, 2023 12:00 PM",
+        "authors": "Aled Maclean-Jones",
+        "url": "https://ashore.io/journal/desk-notes/listen-better-notes-on-building-an-attentive-startup",
+        "tag": ["Article", "Building"],
+        "image": "influences/influences_images/macleanjones.png"
+    },
+    {
+        "title": "How To Do Great Work",
+        "date": "July 01, 2023 12:00 PM",
+        "authors": "Paul Graham",
+        "url": "http://www.paulgraham.com/greatwork.html",
+        "tag": ["Article", "Building"],
+        "image": "influences/influences_images/graham.png"
+    },
+    {
+        "title": "The Techno-Optimist Manifesto",
+        "date": "October 16, 2023 12:00 PM",
+        "authors": "Marc Andreesen",
+        "url": "https://a16z.com/the-techno-optimist-manifesto/",
+        "tag": ["Article", "Acceleration"],
+        "image": "influences/influences_images/andreesen.png"
     }
 ]
