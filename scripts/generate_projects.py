@@ -15,7 +15,7 @@ with open('./project_descriptions.json') as f:
     project_descriptions = json.load(f)
 
 # load the empty project page
-with open("./skeletons/projects/projects_head.html", "r") as f:
+with open("./skeletons/projects_head.html", "r") as f:
     html_content = f.read()
 
 soup = BeautifulSoup(html_content, "html.parser")

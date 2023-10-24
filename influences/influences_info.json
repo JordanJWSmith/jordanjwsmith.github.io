@@ -13,7 +13,7 @@
         "authors": "Aris Roussinos",
         "url": "https://unherd.com/2022/08/its-time-for-anglofuturism/",
         "tag": ["Article", "Policy"],
-        "image": "influences/influences_images/doctorow.png"
+        "image": "influences/influences_images/roussinos.png"
     },
     {
         "title": "Quit Your Job",
@@ -21,7 +21,7 @@
         "authors": "Wolf Tivy",
         "url": "https://www.palladiummag.com/2022/01/06/quit-your-job/",
         "tag": ["Article", "Growth"],
-        "image": "influences/influences_images/roussinos.png"
+        "image": "influences/influences_images/tivy.png"
     },
     {
         "title": "The Only Reason to Explore Space",
@@ -29,14 +29,14 @@
         "authors": "Marko Jukic",
         "url": "https://www.palladiummag.com/2023/08/16/the-only-reason-to-explore-space/",
         "tag": ["Article", "Growth"],
-        "image": "influences/influences_images/jucik.png"
+        "image": "influences/influences_images/jukic.png"
     },
     {
         "title": "People Vs Tech: How the internet is killing democracy (and how we can save it)",
         "date": "April 19, 2018 12:00 PM",
         "authors": "Jamie Bartlett",
         "url": "https://www.amazon.co.uk/People-Vs-Tech-internet-democracy/dp/1785039067",
-        "tag": ["Book", "Digital Policy"],
+        "tag": ["Book", "Policy"],
         "image": "influences/influences_images/bartlett.png"
     },
     {
@@ -44,7 +44,7 @@
         "date": "January 1, 2023 12:00 PM",
         "authors": "Noah Smith",
         "url": "https://www.noahpinion.blog/p/the-third-magic",
-        "tag": ["Book", "Digital Philosophy"],
-        "image": "influences/influences_images/bartlett.png"
+        "tag": ["Article", "Digital Philosophy"],
+        "image": "influences/influences_images/smith.png"
     }
 ]
