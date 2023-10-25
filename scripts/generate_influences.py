@@ -45,7 +45,9 @@ for publication in sorted_publication_descriptions:
     <div class="container col-xxl-8 px-4" style="background-color: #ffffff; padding-top: 1rem; padding-bottom: 1rem; margin-top: 10px; margin-bottom: 10px;">
         <div class="row align-items-center">
             <div class="col-12 col-md-6 custom-im-width">
-                <img src={titlecard_image_path} class="d-block mx-lg-auto img-fluid" alt="Bootstrap Themes" width="700" height="500" loading="lazy">
+                <a href={publication['url']} target="_blank">
+                    <img src={titlecard_image_path} class="d-block mx-lg-auto img-fluid" alt="Bootstrap Themes" width="700" height="500" loading="lazy">
+                </a>
             </div>
             <div class="col-12 col-md-6 custom-text-width">
                 <p class="copy-text" style="font-weight: bold">{publication['title']}</p>
