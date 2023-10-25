@@ -70,5 +70,13 @@
         "url": "https://a16z.com/the-techno-optimist-manifesto/",
         "tag": ["Article", "Acceleration"],
         "image": "influences/influences_images/andreesen.png"
+    },
+    {
+        "title": "The Machine Stops",
+        "date": "November 01, 1909 12:00 PM",
+        "authors": "E. M. Forster",
+        "url": "https://www.amazon.co.uk/Machine-Stops-M-Forster/dp/1434442047",
+        "tag": ["Article", "Digital Philosophy"],
+        "image": "influences/influences_images/forster.png"
     }
 ]
