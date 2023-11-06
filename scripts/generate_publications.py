@@ -6,7 +6,7 @@ from compress_images import crop_to_fit
 
 # TODO: add 'notes' modal
 
-with open('./publications/publication_info.json') as f:
+with open('./docs/publications/publication_info.json') as f:
     publication_descriptions = json.load(f)
 
 sorted_publication_descriptions = sorted(publication_descriptions, key=sort_by_date)
@@ -28,7 +28,7 @@ for publication in sorted_publication_descriptions:
 
     titlecard_image_path = os.path.splitext(image_path)[0]+'_titlecard' + os.path.splitext(image_path)[1]
 
-    if not os.path.exists(titlecard_image_path):
+    if not os.path.exists('docs/'+ titlecard_image_path):
         titlecard_image_path = crop_to_fit(image_path)
     
     publication_card = f"""
@@ -57,7 +57,7 @@ for publication in sorted_publication_descriptions:
     jumbotron = soup.find("div", {"id": "title_jumbotron"})
     jumbotron.insert_after(BeautifulSoup(publication_card, "html.parser"))
 
-with open("publications.html", "w") as output_file:
+with open("docs/publications.html", "w") as output_file:
     output_file.write(soup.prettify())
     print('output file written')
     

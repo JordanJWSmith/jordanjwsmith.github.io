@@ -1,7 +1,7 @@
 from PIL import Image
 import os
 
-def rename_files_replace_spaces(filepath='./projects'):
+def rename_files_replace_spaces(filepath='./docs/projects'):
     """
     Walk through the directory and replace any spaces with underscores. 
     Otherwise this causes trouble with <src> and <href> tags. 
@@ -22,7 +22,7 @@ def rename_files_replace_spaces(filepath='./projects'):
 
 
 
-def compress_images(filepath="./projects", quality=10):
+def compress_images(filepath="./docs/projects", quality=10):
     """
     Compress any images in a given directory
     """

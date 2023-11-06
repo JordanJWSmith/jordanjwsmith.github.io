@@ -7,11 +7,11 @@ from compress_images import rename_files_replace_spaces
 rename_files_replace_spaces()
 
 # get data for each project and sort by creation date
-project_info = extract_projects_info('./projects')
+project_info = extract_projects_info('./docs/projects')
 sorted_project_info = sorted(project_info, key=sort_by_date, reverse=True)
     
 # get the title descrptions
-with open('./project_descriptions.json') as f:
+with open('./docs/projects/project_descriptions.json') as f:
     project_descriptions = json.load(f)
 
 # load the empty project page
@@ -91,6 +91,6 @@ for project in sorted_project_info:
     container_to_edit.insert_after(BeautifulSoup(modal_content, "html.parser"))
 
 
-with open("projects.html", "w") as output_file:
+with open("docs/projects.html", "w") as output_file:
     output_file.write(soup.prettify())
     print('output file written')

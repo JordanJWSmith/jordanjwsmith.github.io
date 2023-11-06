@@ -6,7 +6,7 @@ from compress_images import crop_to_fit
 
 # TODO: add 'notes' modal
 
-with open('./influences/influences_info.json') as f:
+with open('./docs/influences/influences_info.json') as f:
     influences_descriptions = json.load(f)
 
 sorted_publication_descriptions = sorted(influences_descriptions, key=sort_by_date)
@@ -30,9 +30,9 @@ for publication in sorted_publication_descriptions:
 
     image_path = publication['image']
 
-    titlecard_image_path = os.path.splitext(image_path)[0]+'_titlecard' + os.path.splitext(image_path)[1]
+    titlecard_image_path = f"{os.path.splitext(image_path)[0]}_titlecard{os.path.splitext(image_path)[1]}"
 
-    if not os.path.exists(titlecard_image_path):
+    if not os.path.exists(f"docs/{titlecard_image_path}"):
         print('cropping', image_path)
         titlecard_image_path = crop_to_fit(image_path)
 
