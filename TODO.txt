@@ -1,4 +1,5 @@
-Refactor HTML to source folder
+Refactor HTML to source folder [DONE]
+URL cleaning [DONE]
 Add 'notes' modals to publications and influences
 Change button design
 Trim requirements.txt

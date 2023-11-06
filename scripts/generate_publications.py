@@ -45,7 +45,7 @@ for publication in sorted_publication_descriptions:
                 
                 <div class="d-flex flex-wrap align-items-center">
                     <a href={publication['url']} target="_blank">
-                        <button type="button" class="btn btn-primary btn-md px-4 me-2" style="background-color: #C78226; border: 1px solid black;"><i class="bi bi-book"></i></button>
+                        <button type="button" class="btn btn-primary btn-md px-4 me-2" style="background-color: #3C1518; border: 1px solid black;"><i class="bi bi-book"></i></button>
                     </a>
                     <span class="selected-value select-value-color-{tag_colours[publication['tag']]}">{publication['tag']}</span>
                 </div>
