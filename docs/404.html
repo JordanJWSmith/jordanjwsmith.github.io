@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script type="text/javascript">
+    
+    // Define a mapping of clean URLs to their corresponding HTML pages
+    var cleanUrlMap = {
+      'about': 'about.html',
+      'projects': 'projects.html',
+      'publications': 'publications.html',
+      'influences': 'influences.html'
+    };
+
+    // Function to perform URL redirection
+    function redirectCleanUrl() {
+      var path = window.location.pathname; // Get the current URL path
+      var parts = path.split('/'); // Split the path into parts
+
+      // Check if the last part of the path is a clean URL
+      var cleanUrl = parts[parts.length - 1];
+      if (cleanUrl in cleanUrlMap) {
+        var htmlPage = cleanUrlMap[cleanUrl];
+        // Redirect to the corresponding HTML page
+        window.location.replace(htmlPage);
+      }
+    }
+
+    // Execute the redirection function when the page loads
+    window.onload = redirectCleanUrl;
+  </script>
+</head>
+<body>
+  <p>If you are not automatically redirected, <a href="/">click here</a>.</p>
+</body>
+</html>

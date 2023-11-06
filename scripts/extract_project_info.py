@@ -5,7 +5,7 @@ import json
 import os
 
 
-def get_project_descriptions(filepath='project_descriptions.json'):
+def get_project_descriptions(filepath='docs/projects/project_descriptions.json'):
     if os.path.exists(filepath):
         with open(filepath, 'r') as file:
             project_descriptions = json.load(file)
@@ -21,7 +21,7 @@ def sort_by_date(item):
     return datetime.strptime(date_str, date_format)
 
 
-def extract_projects_info(filepath='/projects'):
+def extract_projects_info(filepath='/docs/projects'):
     project_info = []
     project_descriptions = get_project_descriptions()
 
@@ -33,7 +33,7 @@ def extract_projects_info(filepath='/projects'):
             if subdirectory_uuid not in project_descriptions.keys() and os.path.split(root)[0] == filepath:
                 project_descriptions[subdirectory_uuid] = ""
 
-                with open('project_descriptions.json', 'w') as f:
+                with open('docs/projects/project_descriptions.json', 'w') as f:
                     json.dump(project_descriptions, f, indent=4)
 
             # Extract subdirectory contents
@@ -50,12 +50,13 @@ def extract_projects_info(filepath='/projects'):
                     imagefolder = item
                     if 'Untitled.png' in os.listdir(item_path) and 'Untitled_titlecard.png' not in os.listdir(item_path):
                         raw_image = os.path.join(item_path, 'Untitled.png')
-                        first_image = resize(raw_image, 1200, 600)
+                        title_image = resize(raw_image, 1200, 600)
+                        first_image = os.path.relpath(title_image, 'docs/')
+                        
                     else:
                         raw_image = os.path.join(item_path, 'Untitled.png')
-                        first_image = os.path.splitext(raw_image)[0]+'_titlecard' + os.path.splitext(raw_image)[1]
-                        
-                    # print(os.listdir(item_path))
+                        title_image = os.path.splitext(raw_image)[0]+'_titlecard' + os.path.splitext(raw_image)[1]
+                        first_image = os.path.relpath(title_image, 'docs/')
 
 
                 if os.path.isfile(item_path) and item.endswith(".html"):
@@ -96,4 +97,5 @@ def extract_projects_info(filepath='/projects'):
 
     return project_info
 
+get_project_descriptions()
 # projects_info = extract_projects_info('./projects')

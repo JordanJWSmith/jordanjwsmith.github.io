@@ -1,3 +1,7 @@
-Refactor HTML to source folder
+Refactor HTML to source folder [DONE]
+URL cleaning [DONE]
 Add 'notes' modals to publications and influences
-Change button design
+Change button design [DONE]
+Trim requirements.txt
+Add Calendly plugin
+Resize titlecard images

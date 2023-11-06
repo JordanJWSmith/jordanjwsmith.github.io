@@ -103,7 +103,7 @@ body {
 }
 
 .bottom-container {
-  width: 50%; /* Take up full width */
+  width: 75%; /* Take up full width */
   height: 10%; /* 10% of the jumbotron's height */
   padding: 20px; /* Add padding for spacing */
   display: flex;

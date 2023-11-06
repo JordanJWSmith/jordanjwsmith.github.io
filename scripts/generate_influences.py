@@ -6,7 +6,7 @@ from compress_images import crop_to_fit
 
 # TODO: add 'notes' modal
 
-with open('./influences/influences_info.json') as f:
+with open('./docs/influences/influences_info.json') as f:
     influences_descriptions = json.load(f)
 
 sorted_publication_descriptions = sorted(influences_descriptions, key=sort_by_date)
@@ -30,9 +30,9 @@ for publication in sorted_publication_descriptions:
 
     image_path = publication['image']
 
-    titlecard_image_path = os.path.splitext(image_path)[0]+'_titlecard' + os.path.splitext(image_path)[1]
+    titlecard_image_path = f"{os.path.splitext(image_path)[0]}_titlecard{os.path.splitext(image_path)[1]}"
 
-    if not os.path.exists(titlecard_image_path):
+    if not os.path.exists(f"docs/{titlecard_image_path}"):
         print('cropping', image_path)
         titlecard_image_path = crop_to_fit(image_path)
 
@@ -56,7 +56,7 @@ for publication in sorted_publication_descriptions:
                 
                 <div class="d-flex flex-wrap align-items-center">
                     <a href={publication['url']} target="_blank">
-                        <button type="button" class="btn btn-primary btn-md px-4 me-2" style="background-color: #C78226; border: 1px solid black;"><i class="bi bi-book"></i></button>
+                        <button type="button" class="btn btn-primary btn-md px-4 me-2" style="background-color: #3C1518; border: 1px solid black;"><i class="bi bi-book"></i></button>
                     </a>
                     {tag_section}
                 </div>
@@ -68,7 +68,7 @@ for publication in sorted_publication_descriptions:
     jumbotron = soup.find("div", {"id": "title_jumbotron"})
     jumbotron.insert_after(BeautifulSoup(publication_card, "html.parser"))
 
-with open("influences.html", "w") as output_file:
+with open("docs/influences.html", "w") as output_file:
     output_file.write(soup.prettify())
     print('output file written')
     
