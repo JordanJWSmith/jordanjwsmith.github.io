@@ -3,5 +3,5 @@ URL cleaning [DONE]
 Add 'notes' modals to publications and influences
 Change button design [DONE]
 Trim requirements.txt
-Add Calendly plugin
+Add Calendly plugin [DONE]
 Resize titlecard images
