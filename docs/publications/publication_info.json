@@ -1,5 +1,13 @@
 [
     {
+        "title": "Writings on the Wall 2: Good Data Bad Data",
+        "date": "November 4, 2023 10:00 AM",
+        "authors": "Jordan Smith",
+        "url": "https://medium.com/@fourthwallai/writings-on-the-wall-2-good-data-bad-data-f79ae961caf6",
+        "tag": "Dev Blog",
+        "image": "publications/publication_images/Untitled_9.png"
+    },
+    {
         "title": "Real-World Performance of Autonomously Reporting Normal Chest Radiographs in NHS Trusts Using a Deep Learning Algorithm on the GP Pathway (2023)",
         "date": "July 11, 2023 2:34 PM",
         "authors": "Jordan Smith, Tom Naunton Morgan, Paul Williams, Qaiser Malik, Simon Rasalingham",
