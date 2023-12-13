@@ -27,9 +27,14 @@ for publication in sorted_publication_descriptions:
     image_path = publication['image']
 
     titlecard_image_path = os.path.splitext(image_path)[0]+'_titlecard' + os.path.splitext(image_path)[1]
+    print('original titlecard image path:' , titlecard_image_path)
 
     if not os.path.exists('docs/'+ titlecard_image_path):
-        titlecard_image_path = crop_to_fit(image_path)
+        print('creating titlecard')
+        crop_to_fit(image_path)
+
+    print('titlecard image:', titlecard_image_path)
+    print()
     
     publication_card = f"""
 
